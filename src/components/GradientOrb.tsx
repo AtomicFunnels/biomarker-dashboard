@@ -83,15 +83,17 @@ export function GradientOrb({ chrono, bio }: Props) {
       {/* inner gloss */}
       <div className="absolute h-[260px] w-[260px] rounded-full border border-white/10 [box-shadow:inset_0_2px_30px_rgba(255,255,255,0.18),inset_0_-30px_60px_rgba(0,0,0,0.4)]" />
 
-      {/* center label */}
-      <div className="absolute flex flex-col items-center">
-        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
-          younger by
+      {/* center disc + label */}
+      <div className="absolute flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#06070C]/90 backdrop-blur-md border border-white/10 [box-shadow:inset_0_0_30px_rgba(255,255,255,0.06),0_0_40px_rgba(0,0,0,0.6)]">
+        <div className="flex flex-col items-center">
+          <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/60">
+            younger by
+          </div>
+          <div className="mt-0.5 font-display text-5xl leading-none text-gradient-aurora">
+            {(chrono - bio).toFixed(1)}
+          </div>
+          <div className="mt-0.5 font-mono text-[10px] uppercase tracking-widest text-white/50">years</div>
         </div>
-        <div className="mt-1 font-display text-5xl text-gradient-aurora">
-          {(chrono - bio).toFixed(1)}
-        </div>
-        <div className="font-mono text-xs text-white/50">years</div>
       </div>
 
       {/* floating organ dots around */}
