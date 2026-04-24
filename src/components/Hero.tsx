@@ -18,9 +18,9 @@ export function Hero() {
         <div className="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-500/10 blur-3xl" />
       </div>
 
-      <div className="relative grid grid-cols-1 gap-10 p-8 md:p-12 lg:grid-cols-[1.1fr_1fr]">
+      <div className="relative grid grid-cols-1 gap-8 p-5 md:gap-10 md:p-12 lg:grid-cols-[1.1fr_1fr]">
         {/* LEFT: stats */}
-        <div className="flex flex-col justify-between gap-8">
+        <div className="flex flex-col justify-between gap-6 md:gap-8 order-2 lg:order-1">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -38,10 +38,10 @@ export function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="font-display text-[120px] leading-none text-gradient-aurora md:text-[160px]">
+                <div className="font-display text-[88px] leading-none text-gradient-aurora md:text-[160px]">
                   {fmtAge(LATEST.composite)}
                 </div>
-                <div className="-mt-2 text-sm text-white/50">years biologically</div>
+                <div className="-mt-1 text-sm text-white/50">years biologically</div>
               </motion.div>
 
               <motion.div
@@ -61,22 +61,34 @@ export function Hero() {
               </motion.div>
             </div>
 
-            <div className="mt-4 flex items-center gap-3 text-sm text-white/60">
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/60">
               <div>
-                Chronological age <span className="font-mono text-white/90">{CHRONO_AGE}.0</span>
+                Chronological <span className="font-mono text-white/90">{CHRONO_AGE}.0</span>
               </div>
-              <span className="text-white/20">·</span>
+              <span className="hidden text-white/20 md:inline">·</span>
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
                 {monthsTracked} months tracked
               </div>
             </div>
+
+            {/* mobile-only delta chips */}
+            <div className="mt-3 flex flex-wrap gap-1.5 md:hidden">
+              <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-0.5 text-[11px] text-emerald-300 flex items-center gap-1">
+                <ArrowDownRight className="h-3 w-3" />
+                {fmtDelta(deltaFromChrono, 1)} vs chrono
+              </div>
+              <div className="rounded-full border border-violet-400/30 bg-violet-400/10 px-2.5 py-0.5 text-[11px] text-violet-200 flex items-center gap-1">
+                <TrendingDown className="h-3 w-3" />
+                {fmtDelta(deltaFromBaseline, 1)} vs baseline
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            <Stat label="Submissions" value={SUBMISSIONS.length.toString()} />
-            <Stat label="Markers · latest" value={LATEST.panelCount.toString()} />
-            <Stat label="Avg drop / quarter" value={`${fmtAge(Math.abs(deltaFromBaseline) / 5, 1)} yrs`} accent />
+          <div className="grid grid-cols-3 gap-2 md:gap-3">
+            <Stat label="Panels" value={SUBMISSIONS.length.toString()} />
+            <Stat label="Markers" value={LATEST.panelCount.toString()} />
+            <Stat label="Avg / Q" value={`${fmtAge(Math.abs(deltaFromBaseline) / 5, 1)}y`} accent />
           </div>
 
           <div>
@@ -85,7 +97,7 @@ export function Hero() {
         </div>
 
         {/* RIGHT: orb */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center order-1 lg:order-2 px-2">
           <GradientOrb chrono={CHRONO_AGE} bio={LATEST.composite} />
         </div>
       </div>
@@ -95,10 +107,10 @@ export function Hero() {
 
 function Stat({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-      <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">{label}</div>
+    <div className="rounded-xl md:rounded-2xl border border-white/5 bg-white/[0.03] p-3 md:p-4">
+      <div className="text-[9px] md:text-[10px] uppercase tracking-[0.16em] text-white/40 leading-tight whitespace-nowrap">{label}</div>
       <div
-        className={`mt-1 font-display text-3xl ${
+        className={`mt-1 font-display text-2xl md:text-3xl whitespace-nowrap ${
           accent ? 'text-gradient-cool' : 'text-white'
         }`}
       >

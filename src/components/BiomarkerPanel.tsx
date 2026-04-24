@@ -8,7 +8,7 @@ export function BiomarkerPanel() {
   const items = filter === 'all' ? BIOMARKERS : BIOMARKERS.filter((b) => b.organ === filter)
 
   return (
-    <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-6">
+    <div className="rounded-2xl md:rounded-3xl border border-white/5 bg-white/[0.02] p-4 md:p-6">
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <Pill active={filter === 'all'} onClick={() => setFilter('all')} label="All" />
         {ORGAN_ORDER.map((k) => {

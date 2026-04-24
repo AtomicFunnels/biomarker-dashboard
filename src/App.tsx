@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="min-h-screen w-full noise">
       <TopBar />
-      <main className="mx-auto max-w-[1400px] px-6 pb-32 pt-8 md:px-10">
+      <main className="mx-auto max-w-[1400px] px-4 pb-24 pt-6 md:px-10 md:pb-32 md:pt-8">
         <Hero />
 
         <SectionLabel
@@ -125,14 +125,14 @@ function SectionLabel({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
-      className="mb-5 mt-16 flex flex-col gap-1.5"
+      className="mb-4 mt-10 flex flex-col gap-1.5 md:mb-5 md:mt-16"
     >
-      <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/40">
+      <div className="flex items-center gap-2 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/40">
         {icon}
         {eyebrow}
       </div>
-      <h2 className="font-display text-3xl text-white md:text-4xl">{title}</h2>
-      {subtitle && <p className="text-sm text-white/50">{subtitle}</p>}
+      <h2 className="font-display text-2xl text-white md:text-4xl">{title}</h2>
+      {subtitle && <p className="text-xs text-white/50 md:text-sm">{subtitle}</p>}
     </motion.div>
   )
 }

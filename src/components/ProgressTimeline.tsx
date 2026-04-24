@@ -36,7 +36,7 @@ export function ProgressTimeline() {
   )
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-6">
+    <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/5 bg-white/[0.02] p-4 md:p-6">
       <div className="mb-4 flex flex-wrap items-center gap-2">
         {ORGAN_ORDER.map((k) => {
           const def = ORGANS[k]

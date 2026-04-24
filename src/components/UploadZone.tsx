@@ -9,7 +9,7 @@ export function UploadZone() {
       {/* drop zone */}
       <motion.div
         whileHover={{ scale: 1.005 }}
-        className="relative overflow-hidden rounded-3xl border border-dashed border-white/15 bg-white/[0.02] p-10"
+        className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-dashed border-white/15 bg-white/[0.02] p-6 md:p-10"
       >
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-gradient-to-br from-violet-500/15 via-cyan-500/15 to-pink-500/15 blur-3xl" />
@@ -43,7 +43,7 @@ export function UploadZone() {
       </motion.div>
 
       {/* submission history */}
-      <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-6">
+      <div className="rounded-2xl md:rounded-3xl border border-white/5 bg-white/[0.02] p-5 md:p-6">
         <div className="mb-4 text-[10px] uppercase tracking-[0.2em] text-white/40">Submission history</div>
         <ol className="relative space-y-4 border-l border-white/10 pl-5">
           {[...SUBMISSIONS].reverse().map((s, i) => (
